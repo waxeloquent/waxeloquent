@@ -1,0 +1,6 @@
+# robots.txt for waxeloquent.github.io/waxeloquent/
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://waxeloquent.github.io/waxeloquent/sitemap.xml
