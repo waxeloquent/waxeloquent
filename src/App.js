@@ -1,7 +1,13 @@
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import ScrollToTop from './components/ScrollToTop';
 
-// Page Components
+// Import layout components
+import Header from './components/layout/Header';
+import Footer from './components/layout/Footer';
+
+// Simple page components
 function Home() {
   return (
     <>
@@ -12,18 +18,18 @@ function Home() {
             Professional editorial and writing services for tech professionals and agile organizations
           </p>
           <div className="flex flex-col md:flex-row gap-4 justify-center animate-fade-in-delay-2">
-            <Link
-              to="/services"
+            <a
+              href="/services"
               className="bg-primary text-white font-semibold py-3 px-8 rounded hover:bg-secondary transition-all"
             >
               Explore Services
-            </Link>
-            <Link
-              to="/contact"
+            </a>
+            <a
+              href="/contact"
               className="border-2 border-primary text-white font-semibold py-3 px-8 rounded hover:bg-primary transition-all"
             >
               Get in Touch
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -53,12 +59,12 @@ function Home() {
           </div>
           
           <div className="text-center">
-            <Link
-              to="/services"
+            <a
+              href="/services"
               className="bg-primary text-white font-semibold py-3 px-8 rounded hover:bg-secondary transition-all"
             >
               View All Services
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -121,7 +127,7 @@ function Services() {
       <section className="py-16">
         <div className="container mx-auto px-5">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-md border border-transparent hover:border-primary transition-all">
+            <div id="editing" className="bg-white p-8 rounded-lg shadow-md border border-transparent hover:border-primary transition-all">
               <div className="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-6">
                 <span className="text-2xl text-primary">✍️</span>
               </div>
@@ -146,7 +152,7 @@ function Services() {
               </ul>
             </div>
             
-            <div className="bg-white p-8 rounded-lg shadow-md border border-primary relative">
+            <div id="ghostwriting" className="bg-white p-8 rounded-lg shadow-md border border-primary relative">
               <div className="absolute top-4 right-4 bg-primary text-white text-xs font-bold px-3 py-1 rounded-full">
                 Popular
               </div>
@@ -174,7 +180,7 @@ function Services() {
               </ul>
             </div>
             
-            <div className="bg-white p-8 rounded-lg shadow-md border border-transparent hover:border-primary transition-all">
+            <div id="marketing" className="bg-white p-8 rounded-lg shadow-md border border-transparent hover:border-primary transition-all">
               <div className="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-6">
                 <span className="text-2xl text-primary">📣</span>
               </div>
@@ -195,6 +201,31 @@ function Services() {
                 <li className="flex items-start">
                   <span className="text-primary mr-3 mt-1">✓</span>
                   <span>Strategic messaging framework</span>
+                </li>
+              </ul>
+            </div>
+            
+            <div id="exec-comms" className="bg-white p-8 rounded-lg shadow-md border border-transparent hover:border-primary transition-all">
+              <div className="w-16 h-16 flex items-center justify-center bg-primary bg-opacity-10 rounded-full mb-6">
+                <span className="text-2xl text-primary">🎤</span>
+              </div>
+              <h3 className="font-heading text-xl mb-3">Executive Communications</h3>
+              <p className="text-gray-700 mb-6">Speeches, presentations, and communications that reflect your leadership and vision.</p>
+              <p className="text-gray-700 mb-6">Our executive communications services help leaders articulate their vision, build credibility, and inspire action. We craft speeches, presentations, internal communications, and thought leadership pieces that reflect your authentic voice while delivering maximum impact.</p>
+              
+              <h4 className="font-semibold text-lg mb-4">What's Included:</h4>
+              <ul className="space-y-2 mb-8">
+                <li className="flex items-start">
+                  <span className="text-primary mr-3 mt-1">✓</span>
+                  <span>Message strategy development</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-3 mt-1">✓</span>
+                  <span>Speech or presentation writing</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-primary mr-3 mt-1">✓</span>
+                  <span>Talking points creation</span>
                 </li>
               </ul>
             </div>
@@ -220,7 +251,7 @@ function Portfolio() {
       <section className="py-16">
         <div className="container mx-auto px-5">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all">
+            <div id="technical" className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all">
               <div className="h-56 bg-gray-200 overflow-hidden">
                 <div className="w-full h-full bg-primary bg-opacity-20 flex items-center justify-center">
                   <span className="text-5xl">📄</span>
@@ -240,7 +271,7 @@ function Portfolio() {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all">
+            <div id="marketing" className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all">
               <div className="h-56 bg-gray-200 overflow-hidden">
                 <div className="w-full h-full bg-secondary bg-opacity-20 flex items-center justify-center">
                   <span className="text-5xl">🖥️</span>
@@ -260,7 +291,7 @@ function Portfolio() {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all">
+            <div id="executive" className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all">
               <div className="h-56 bg-gray-200 overflow-hidden">
                 <div className="w-full h-full bg-accent bg-opacity-20 flex items-center justify-center">
                   <span className="text-5xl">🎤</span>
@@ -388,20 +419,20 @@ function Blog() {
                 </div>
                 
                 <h2 className="font-heading text-xl mb-3">
-                  <Link to="/blog/welcome-to-our-blog" className="text-dark hover:text-primary">
+                  <a href="/blog/welcome-to-our-blog" className="text-dark hover:text-primary">
                     Welcome to Our Blog
-                  </Link>
+                  </a>
                 </h2>
                 
                 <p className="text-gray-700 mb-4">Introducing Wax Eloquent's blog, where we'll share insights on effective writing, editing, and communication for technical professionals and agile organizations.</p>
                 
-                <Link 
-                  to="/blog/welcome-to-our-blog"
+                <a 
+                  href="/blog/welcome-to-our-blog"
                   className="inline-block font-semibold text-primary hover:text-secondary relative pr-6"
                 >
                   Read More
                   <span className="absolute right-0 top-1/2 -translate-y-1/2 transition-transform group-hover:translate-x-1">→</span>
-                </Link>
+                </a>
               </div>
             </article>
             
@@ -418,20 +449,20 @@ function Blog() {
                 </div>
                 
                 <h2 className="font-heading text-xl mb-3">
-                  <Link to="/blog/technical-jargon-vs-clarity" className="text-dark hover:text-primary">
+                  <a href="/blog/technical-jargon-vs-clarity" className="text-dark hover:text-primary">
                     Technical Jargon vs. Clarity: Finding the Right Balance
-                  </Link>
+                  </a>
                 </h2>
                 
                 <p className="text-gray-700 mb-4">How to communicate complex technical concepts without losing your audience in unnecessary jargon and terminology.</p>
                 
-                <Link 
-                  to="/blog/technical-jargon-vs-clarity"
+                <a 
+                  href="/blog/technical-jargon-vs-clarity"
                   className="inline-block font-semibold text-primary hover:text-secondary relative pr-6"
                 >
                   Read More
                   <span className="absolute right-0 top-1/2 -translate-y-1/2 transition-transform group-hover:translate-x-1">→</span>
-                </Link>
+                </a>
               </div>
             </article>
           </div>
@@ -604,72 +635,6 @@ function Contact() {
   );
 }
 
-// Header Component
-function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
-  
-  return (
-    <header className="bg-dark text-white py-6 fixed w-full top-0 z-50">
-      <div className="container mx-auto px-5 flex justify-between items-center">
-        <Link to="/" className="flex items-center">
-          <h1 className="font-heading text-2xl font-bold">Wax Eloquent</h1>
-          <p className="text-sm opacity-80 ml-2 hidden md:block">Professional editorial and writing services</p>
-        </Link>
-        
-        <nav className="hidden md:block">
-          <ul className="flex gap-6">
-            <li><Link to="/" className="text-white hover:text-accent transition-colors">Home</Link></li>
-            <li><Link to="/services" className="text-white hover:text-accent transition-colors">Services</Link></li>
-            <li><Link to="/portfolio" className="text-white hover:text-accent transition-colors">Portfolio</Link></li>
-            <li><Link to="/about" className="text-white hover:text-accent transition-colors">About</Link></li>
-            <li><Link to="/blog" className="text-white hover:text-accent transition-colors">Blog</Link></li>
-            <li>
-              <Link 
-                to="/contact" 
-                className="bg-primary text-white font-semibold py-2 px-4 rounded hover:bg-secondary transition-all"
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        
-        <div className="md:hidden">
-          <button 
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-white focus:outline-none"
-          >
-            <span className="block w-6 h-0.5 bg-white mb-1"></span>
-            <span className="block w-6 h-0.5 bg-white mb-1"></span>
-            <span className="block w-6 h-0.5 bg-white"></span>
-          </button>
-        </div>
-      </div>
-      
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-dark">
-          <ul className="flex flex-col gap-4 px-5 py-4">
-            <li><Link to="/" className="block py-2 text-white" onClick={() => setMobileMenuOpen(false)}>Home</Link></li>
-            <li><Link to="/services" className="block py-2 text-white" onClick={() => setMobileMenuOpen(false)}>Services</Link></li>
-            <li><Link to="/portfolio" className="block py-2 text-white" onClick={() => setMobileMenuOpen(false)}>Portfolio</Link></li>
-            <li><Link to="/about" className="block py-2 text-white" onClick={() => setMobileMenuOpen(false)}>About</Link></li>
-            <li><Link to="/blog" className="block py-2 text-white" onClick={() => setMobileMenuOpen(false)}>Blog</Link></li>
-            <li>
-              <Link 
-                to="/contact" 
-                className="block bg-primary text-white font-semibold py-2 px-6 rounded text-center mt-2"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Contact
-              </Link>
-            </li>
-          </ul>
-        </div>
-      )}
-    </header>
-  );
-}
-
 // Footer Component
 function Footer() {
   return (
@@ -684,21 +649,21 @@ function Footer() {
           <div>
             <h3 className="text-xl text-white mb-4">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link to="/" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Home</Link></li>
-              <li><Link to="/services" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Services</Link></li>
-              <li><Link to="/portfolio" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Portfolio</Link></li>
-              <li><Link to="/about" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">About</Link></li>
-              <li><Link to="/blog" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Blog</Link></li>
+              <li><a href="/" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Home</a></li>
+              <li><a href="/services" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Services</a></li>
+              <li><a href="/portfolio" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Portfolio</a></li>
+              <li><a href="/about" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">About</a></li>
+              <li><a href="/blog" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Blog</a></li>
             </ul>
           </div>
           
           <div>
             <h3 className="text-xl text-white mb-4">Services</h3>
             <ul className="space-y-2">
-              <li><Link to="/services" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Editing</Link></li>
-              <li><Link to="/services" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Ghostwriting</Link></li>
-              <li><Link to="/services" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Marketing Content</Link></li>
-              <li><Link to="/services" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Executive Comms</Link></li>
+              <li><a href="/services#editing" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Editing</a></li>
+              <li><a href="/services#ghostwriting" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Ghostwriting</a></li>
+              <li><a href="/services#marketing" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Marketing Content</a></li>
+              <li><a href="/services#exec-comms" className="opacity-80 hover:opacity-100 hover:text-accent transition-colors">Executive Comms</a></li>
             </ul>
           </div>
           
@@ -731,21 +696,24 @@ function Footer() {
 // Main App component with routing
 function App() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Header />
-      <main className="flex-grow pt-20">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/portfolio" element={<Portfolio />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/blog" element={<Blog />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </main>
-      <Footer />
-    </div>
+    <HelmetProvider>
+      <ScrollToTop />
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow pt-20">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/portfolio" element={<Portfolio />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </HelmetProvider>
   );
 }
 
