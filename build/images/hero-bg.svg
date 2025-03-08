@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080">
+  <!-- Gradient Background -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#231942" />
+      <stop offset="100%" stop-color="#5e548e" />
+    </linearGradient>
+    
+    <!-- Pattern for subtle texture -->
+    <pattern id="patternDots" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="#ffffff" fill-opacity="0.05" />
+    </pattern>
+  </defs>
+  
+  <!-- Base background with gradient -->
+  <rect width="1920" height="1080" fill="url(#bgGradient)" />
+  
+  <!-- Subtle texture layer -->
+  <rect width="1920" height="1080" fill="url(#patternDots)" />
+  
+  <!-- Abstract shapes -->
+  <g opacity="0.1">
+    <!-- Pen nib shape -->
+    <path d="M1600 200 L1750 350 L1700 400 L1550 250 Z" fill="#f4f1f9" />
+    
+    <!-- Book shape -->
+    <path d="M200 700 L500 700 L500 900 L200 900 Z" fill="#f4f1f9" />
+    <path d="M500 700 L505 705 L505 905 L500 900 Z" fill="#f4f1f9" />
+    
+    <!-- Document shapes -->
+    <rect x="800" y="300" width="200" height="300" rx="10" fill="#f4f1f9" />
+    <rect x="830" y="330" width="140" height="20" rx="5" fill="#231942" />
+    <rect x="830" y="360" width="140" height="10" rx="5" fill="#231942" />
+    <rect x="830" y="380" width="120" height="10" rx="5" fill="#231942" />
+    <rect x="830" y="400" width="130" height="10" rx="5" fill="#231942" />
+    
+    <!-- Abstract lines symbolizing text -->
+    <g>
+      <rect x="300" y="300" width="150" height="8" rx="4" fill="#f4f1f9" />
+      <rect x="300" y="320" width="200" height="8" rx="4" fill="#f4f1f9" />
+      <rect x="300" y="340" width="180" height="8" rx="4" fill="#f4f1f9" />
+      <rect x="300" y="360" width="220" height="8" rx="4" fill="#f4f1f9" />
+    </g>
+    
+    <g>
+      <rect x="1200" y="600" width="180" height="8" rx="4" fill="#f4f1f9" />
+      <rect x="1200" y="620" width="250" height="8" rx="4" fill="#f4f1f9" />
+      <rect x="1200" y="640" width="220" height="8" rx="4" fill="#f4f1f9" />
+      <rect x="1200" y="660" width="190" height="8" rx="4" fill="#f4f1f9" />
+    </g>
+    
+    <!-- Curvy decorative lines -->
+    <path d="M100,100 Q400,300 700,100 T1300,100" stroke="#f4f1f9" stroke-width="5" fill="none" />
+    <path d="M600,1000 Q900,800 1200,1000 T1800,1000" stroke="#f4f1f9" stroke-width="5" fill="none" />
+  </g>
+  
+  <!-- Larger abstract shapes with more opacity for depth -->
+  <g opacity="0.05">
+    <circle cx="150" cy="150" r="100" fill="#f4f1f9" />
+    <circle cx="1800" cy="900" r="150" fill="#f4f1f9" />
+    <rect x="1000" y="400" width="300" height="300" rx="20" fill="#f4f1f9" />
+  </g>
+</svg>
