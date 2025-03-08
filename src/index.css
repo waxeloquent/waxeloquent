@@ -1,14 +1,39 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Custom base styles */
-html, body {
-  @apply font-body text-gray-800;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  @apply font-heading font-bold text-dark;
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
 }
 
-/* Add any other custom styles here */
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #5e548e;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+main {
+  padding: 2rem;
+}
+
+footer {
+  background-color: #231942;
+  color: white;
+  padding: 1rem;
+  margin-top: 2rem;
+}

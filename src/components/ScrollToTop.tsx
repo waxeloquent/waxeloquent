@@ -1,4 +1,5 @@
-// src/components/ScrollToTop.tsx
+// src/components/ScrollToTop.tsx - Place this file in the src/components folder
+
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 

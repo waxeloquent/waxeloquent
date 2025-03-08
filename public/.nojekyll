@@ -1,0 +1,3 @@
+// public/.nojekyll - Create an empty file named .nojekyll in the public folder
+// This file should be completely empty - this comment is just for explanation
+// The .nojekyll file tells GitHub Pages not to process your site with Jekyll

@@ -1,6 +1,7 @@
-// src/components/layout/Header.tsx
-import { Link } from 'react-router-dom';
+// src/components/layout/Header.tsx - Place this file in the src/components/layout folder
+
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -55,7 +56,7 @@ export default function Header() {
             <li>
               <Link 
                 to="/contact" 
-                className="block bg-primary text-white font-semibold py-2 px-6 rounded text-center"
+                className="block bg-primary text-white font-semibold py-2 px-6 rounded text-center mt-2"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact

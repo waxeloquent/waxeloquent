@@ -1,4 +1,5 @@
-// src/components/layout/Footer.tsx
+// src/components/layout/Footer.tsx - Place this file in the src/components/layout folder
+
 import { Link } from 'react-router-dom';
 
 export default function Footer() {
@@ -28,7 +29,7 @@ export default function Footer() {
               <li><Link to="/services#editing" className="opacity-80 hover:opacity-100 hover:text-accent">Editing</Link></li>
               <li><Link to="/services#ghostwriting" className="opacity-80 hover:opacity-100 hover:text-accent">Ghostwriting</Link></li>
               <li><Link to="/services#marketing" className="opacity-80 hover:opacity-100 hover:text-accent">Marketing Content</Link></li>
-              <li><Link to="/services#executive" className="opacity-80 hover:opacity-100 hover:text-accent">Executive Comms</Link></li>
+              <li><Link to="/services#exec-comms" className="opacity-80 hover:opacity-100 hover:text-accent">Executive Comms</Link></li>
             </ul>
           </div>
           

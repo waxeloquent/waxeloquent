@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#5e548e" />
+      <stop offset="100%" stop-color="#9f86c0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGradient)" />
+  
+  <!-- Decorative elements -->
+  <circle cx="120" cy="80" r="60" fill="#be95c4" opacity="0.6" />
+  <circle cx="680" cy="320" r="80" fill="#231942" opacity="0.3" />
+  <path d="M0 300 Q 200 200 400 250 T 800 200" stroke="#f4f1f9" stroke-width="6" fill="none" opacity="0.3" />
+  
+  <!-- Text elements -->
+  <text x="400" y="150" font-family="'Playfair Display', serif" font-size="40" font-weight="700" fill="#f4f1f9" text-anchor="middle">Welcome to Our Blog</text>
+  <text x="400" y="200" font-family="'Source Sans Pro', sans-serif" font-size="20" fill="#f4f1f9" text-anchor="middle">Insights on Technical Writing and Communication</text>
+  
+  <!-- Pen icon -->
+  <g transform="translate(380, 250) scale(0.1)">
+    <path d="M400 128c-220.9 0-400 179.1-400 400s179.1 400 400 400 400-179.1 400-400-179.1-400-400-400zm286.9 550.3l-117.2 117.2c-6.2 6.2-14.4 9.4-22.6 9.4-8.3 0-16.4-3.2-22.6-9.4l-239.6-239.6c-6-6-9.4-14.1-9.4-22.6v-88c0-17.7 14.3-32 32-32h88c8.5 0 16.6 3.3 22.6 9.4l239.6 239.6c12.5 12.5 12.5 32.8 0 45.3l29.2-29.3z" fill="#f4f1f9"/>
+  </g>
+</svg>

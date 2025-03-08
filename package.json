@@ -1,3 +1,5 @@
+// package.json - Place this file in the root of your project
+
 {
   "name": "wax-eloquent",
   "version": "1.0.0",

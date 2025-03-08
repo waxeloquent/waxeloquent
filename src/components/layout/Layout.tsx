@@ -1,4 +1,5 @@
-// src/components/layout/Layout.tsx
+// src/components/layout/Layout.tsx - Place this file in the src/components/layout folder
+
 import { Helmet } from 'react-helmet-async';
 import Header from './Header';
 import Footer from './Footer';

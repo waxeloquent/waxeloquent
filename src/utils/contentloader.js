@@ -1,9 +1,11 @@
-// src/utils/contentLoader.ts
+// src/utils/contentLoader.ts - Place this file in the src/utils folder
+
 import matter from 'gray-matter';
 
 export async function getPostBySlug(slug: string) {
   try {
-    const response = await fetch(`/content/blog/${slug}.md`);
+    // Use PUBLIC_URL for GitHub Pages compatibility
+    const response = await fetch(`${process.env.PUBLIC_URL}/content/blog/${slug}.md`);
     const markdown = await response.text();
     const { data, content } = matter(markdown);
     
@@ -38,4 +40,4 @@ export async function getAllPosts() {
     );
 }
 
-// Similar functions for services and portfolio items
+// Similar functions for services and portfolio items could be added here
