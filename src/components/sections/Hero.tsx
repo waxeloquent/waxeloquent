@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
-    <section className="bg-dark text-white text-center py-24 md:py-32 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center bg-blend-overlay bg-opacity-80">
+    <section className="bg-dark text-white text-center py-24 md:py-32">
       <div className="container mx-auto px-5">
         <h2 className="font-heading text-4xl md:text-5xl mb-6">Craft Your Message with Precision</h2>
         <p className="text-lg md:text-xl max-w-2xl mx-auto mb-8">

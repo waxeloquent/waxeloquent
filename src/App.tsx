@@ -1,5 +1,3 @@
-// src/App.tsx - Place this file in the src folder at the root of your project
-
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/layout/Header'
 import Footer from './components/layout/Footer'
