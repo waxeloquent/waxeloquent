@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/waxeloquent/static/css/main.a819f29d.css",
+    "main.js": "/waxeloquent/static/js/main.c19997b3.js",
+    "index.html": "/waxeloquent/index.html",
+    "main.a819f29d.css.map": "/waxeloquent/static/css/main.a819f29d.css.map",
+    "main.c19997b3.js.map": "/waxeloquent/static/js/main.c19997b3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a819f29d.css",
+    "static/js/main.c19997b3.js"
+  ]
+}

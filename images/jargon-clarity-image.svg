@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#231942" />
+      <stop offset="100%" stop-color="#5e548e" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="800" height="400" fill="url(#bgGradient)" />
+  
+  <!-- Decorative elements -->
+  <rect x="50" y="50" width="200" height="300" rx="10" fill="#9f86c0" opacity="0.2" />
+  <rect x="550" y="50" width="200" height="300" rx="10" fill="#be95c4" opacity="0.2" />
+  
+  <!-- Center divider -->
+  <line x1="400" y1="50" x2="400" y2="350" stroke="#f4f1f9" stroke-width="2" stroke-dasharray="10,5" />
+  
+  <!-- Left side: Technical jargon -->
+  <g transform="translate(150, 140)">
+    <text font-family="'Source Sans Pro', monospace" font-size="14" fill="#f4f1f9" text-anchor="middle">
+      <tspan x="0" y="0">API.authenticate(OAuth2.0)</tspan>
+      <tspan x="0" y="24">microservices.deploy(K8s)</tspan>
+      <tspan x="0" y="48">AWS.lambda.invoke(async)</tspan>
+      <tspan x="0" y="72">SSO.SAML.federation()</tspan>
+    </text>
+  </g>
+  
+  <!-- Right side: Clarity -->
+  <g transform="translate(650, 140)">
+    <text font-family="'Source Sans Pro', sans-serif" font-size="14" fill="#f4f1f9" text-anchor="middle">
+      <tspan x="0" y="0">Securely sign in to the system</tspan>
+      <tspan x="0" y="24">Scale your application automatically</tspan>
+      <tspan x="0" y="48">Run code without managing servers</tspan>
+      <tspan x="0" y="72">Log in once for all your apps</tspan>
+    </text>
+  </g>
+  
+  <!-- Title -->
+  <text x="400" y="80" font-family="'Playfair Display', serif" font-size="36" font-weight="700" fill="#f4f1f9" text-anchor="middle">Technical Jargon vs. Clarity</text>
+  
+  <!-- Icons -->
+  <g transform="translate(150, 240)">
+    <circle cx="0" cy="0" r="30" fill="#5e548e" />
+    <text x="0" y="8" font-family="monospace" font-size="30" fill="#f4f1f9" text-anchor="middle">{}</text>
+  </g>
+  
+  <g transform="translate(650, 240)">
+    <circle cx="0" cy="0" r="30" fill="#5e548e" />
+    <text x="0" y="8" font-family="'Source Sans Pro', sans-serif" font-size="30" fill="#f4f1f9" text-anchor="middle">Aa</text>
+  </g>
+  
+  <!-- Versus text -->
+  <circle cx="400" cy="230" r="40" fill="#be95c4" />
+  <text x="400" y="240" font-family="'Playfair Display', serif" font-size="24" font-weight="700" fill="#f4f1f9" text-anchor="middle">VS</text>
+</svg>
