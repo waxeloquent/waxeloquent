@@ -1,152 +1,94 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+// src/components/layout/Header.tsx
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-// Dropdown Menu Component
-const DropdownMenu = ({ isOpen, items, onClose }) => {
-  const menuRef = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        onClose();
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
-    }
-    
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
-  return (
-    <div 
-      ref={menuRef}
-      className="absolute mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 text-sm"
-    >
-      {items.map((item, index) => (
-        <Link
-          key={index}
-          to={item.path}
-          className="block px-4 py-2 text-gray-700 hover:bg-primary hover:text-white transition-colors"
-          onClick={onClose}
-        >
-          {item.label}
-        </Link>
-      ))}
-    </div>
-  );
-};
-
-// Main Header Component
+/**
+ * Header Component
+ * Responsive navigation header with mobile menu support and scroll effects
+ */
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
-  const [portfolioDropdownOpen, setPortfolioDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
   
-  // Close mobile menu when a route is selected
-  const closeMobileMenu = () => setMobileMenuOpen(false);
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location]);
   
-  // Services dropdown menu items
-  const servicesItems = [
-    { label: 'Substantive Editing', path: '/services#editing' },
-    { label: 'Ghostwriting', path: '/services#ghostwriting' },
-    { label: 'Marketing Content', path: '/services#marketing' },
-    { label: 'Executive Communications', path: '/services#exec-comms' },
-    { label: 'All Services', path: '/services' },
-  ];
-  
-  // Portfolio dropdown menu items
-  const portfolioItems = [
-    { label: 'Technical Writing', path: '/portfolio#technical' },
-    { label: 'Marketing Content', path: '/portfolio#marketing' },
-    { label: 'Executive Communications', path: '/portfolio#executive' },
-    { label: 'All Projects', path: '/portfolio' },
-  ];
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+    
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   
   return (
-    <header className="bg-dark bg-opacity-95 backdrop-blur-sm text-white py-4 fixed w-full top-0 z-50 shadow-md">
+    <header 
+      className={`transition-all duration-300 fixed w-full top-0 z-50 ${
+        scrolled 
+          ? 'bg-dark/95 backdrop-blur shadow-lg py-3' 
+          : 'bg-dark py-4'
+      }`}
+    >
       <div className="container mx-auto px-5 flex justify-between items-center">
+        {/* Logo */}
         <Link to="/" className="flex items-center group">
-          <h1 className="font-heading text-2xl font-bold tracking-wide group-hover:text-accent transition-colors">
-            Wax <span className="text-accent group-hover:text-white transition-colors">Eloquent</span>
+          <h1 className="font-heading text-2xl font-bold tracking-wide text-white">
+            Wax <span className="text-accent transition-colors duration-300 group-hover:text-white">Eloquent</span>
           </h1>
         </Link>
         
+        {/* Desktop Navigation */}
         <nav className="hidden md:block">
-          <ul className="flex gap-8 items-center">
+          <ul className="flex items-center space-x-8">
             <li>
-              <Link to="/" className="text-white hover:text-accent transition-colors py-2">
+              <Link 
+                to="/" 
+                className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300"
+              >
                 Home
               </Link>
             </li>
-            
-            <li className="relative">
-              <button 
-                className="text-white hover:text-accent transition-colors py-2 flex items-center gap-1"
-                onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
+            <li>
+              <Link 
+                to="/services" 
+                className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300"
               >
                 Services
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className={`h-4 w-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`} 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <DropdownMenu 
-                isOpen={servicesDropdownOpen} 
-                items={servicesItems} 
-                onClose={() => setServicesDropdownOpen(false)} 
-              />
+              </Link>
             </li>
-            
-            <li className="relative">
-              <button 
-                className="text-white hover:text-accent transition-colors py-2 flex items-center gap-1"
-                onClick={() => setPortfolioDropdownOpen(!portfolioDropdownOpen)}
+            <li>
+              <Link 
+                to="/portfolio" 
+                className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300"
               >
                 Portfolio
-                <svg 
-                  xmlns="http://www.w3.org/2000/svg" 
-                  className={`h-4 w-4 transition-transform duration-200 ${portfolioDropdownOpen ? 'rotate-180' : ''}`} 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              <DropdownMenu 
-                isOpen={portfolioDropdownOpen} 
-                items={portfolioItems} 
-                onClose={() => setPortfolioDropdownOpen(false)} 
-              />
+              </Link>
             </li>
-            
             <li>
-              <Link to="/about" className="text-white hover:text-accent transition-colors py-2">
+              <Link 
+                to="/about" 
+                className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300"
+              >
                 About
               </Link>
             </li>
-            
             <li>
-              <Link to="/blog" className="text-white hover:text-accent transition-colors py-2">
+              <Link 
+                to="/blog" 
+                className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300"
+              >
                 Blog
               </Link>
             </li>
-            
             <li>
               <Link 
                 to="/contact" 
-                className="bg-primary bg-opacity-80 hover:bg-opacity-100 text-white font-semibold py-2 px-5 rounded hover:shadow-lg transition-all ml-2"
+                className="ml-4 bg-primary hover:bg-accent text-white font-semibold py-2 px-6 rounded transition-all duration-300 hover:shadow-lg"
               >
                 Contact
               </Link>
@@ -154,10 +96,12 @@ function Header() {
           </ul>
         </nav>
         
+        {/* Mobile Menu Button */}
         <div className="md:hidden">
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-white focus:outline-none"
+            className="text-white focus:outline-none p-1 rounded hover:bg-primary/20 transition-colors"
+            aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -174,87 +118,17 @@ function Header() {
       
       {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-dark bg-opacity-95 py-4 px-5 shadow-lg animate-fade-in">
+        <div className="md:hidden bg-dark/95 backdrop-blur py-4 px-5 shadow-lg animate-fade-in border-t border-primary/20">
           <ul className="flex flex-col gap-4">
-            <li><Link to="/" className="block py-2 text-white" onClick={closeMobileMenu}>Home</Link></li>
-            
-            <li>
-              <div className="py-2">
-                <div 
-                  className="flex justify-between items-center"
-                  onClick={() => setServicesDropdownOpen(!servicesDropdownOpen)}
-                >
-                  <span className="text-white">Services</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className={`h-4 w-4 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180' : ''}`} 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-                
-                {servicesDropdownOpen && (
-                  <div className="pl-4 mt-2 border-l border-accent space-y-2">
-                    {servicesItems.map((item, index) => (
-                      <Link
-                        key={index}
-                        to={item.path}
-                        className="block py-1 text-gray-300 hover:text-white"
-                        onClick={closeMobileMenu}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </li>
-            
-            <li>
-              <div className="py-2">
-                <div 
-                  className="flex justify-between items-center"
-                  onClick={() => setPortfolioDropdownOpen(!portfolioDropdownOpen)}
-                >
-                  <span className="text-white">Portfolio</span>
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className={`h-4 w-4 transition-transform duration-200 ${portfolioDropdownOpen ? 'rotate-180' : ''}`} 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-                
-                {portfolioDropdownOpen && (
-                  <div className="pl-4 mt-2 border-l border-accent space-y-2">
-                    {portfolioItems.map((item, index) => (
-                      <Link
-                        key={index}
-                        to={item.path}
-                        className="block py-1 text-gray-300 hover:text-white"
-                        onClick={closeMobileMenu}
-                      >
-                        {item.label}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </li>
-            
-            <li><Link to="/about" className="block py-2 text-white" onClick={closeMobileMenu}>About</Link></li>
-            <li><Link to="/blog" className="block py-2 text-white" onClick={closeMobileMenu}>Blog</Link></li>
+            <li><Link to="/" className="block py-2 text-white hover:text-accent transition-colors">Home</Link></li>
+            <li><Link to="/services" className="block py-2 text-white hover:text-accent transition-colors">Services</Link></li>
+            <li><Link to="/portfolio" className="block py-2 text-white hover:text-accent transition-colors">Portfolio</Link></li>
+            <li><Link to="/about" className="block py-2 text-white hover:text-accent transition-colors">About</Link></li>
+            <li><Link to="/blog" className="block py-2 text-white hover:text-accent transition-colors">Blog</Link></li>
             <li>
               <Link 
                 to="/contact" 
-                className="block bg-primary text-white font-semibold py-2 px-4 rounded text-center mt-2"
-                onClick={closeMobileMenu}
+                className="block bg-primary text-white font-semibold py-2 px-4 rounded text-center mt-2 hover:bg-accent transition-colors duration-300"
               >
                 Contact
               </Link>
