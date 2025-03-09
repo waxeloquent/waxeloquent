@@ -46,22 +46,20 @@ function Header() {
           </h1>
         </Link>
         
-        <nav className="hidden md:block">
-          <ul className="flex items-center space-x-8">
-            <li><Link to="/" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300">Home</Link></li>
-            <li><Link to="/services" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300">Services</Link></li>
-            <li><Link to="/portfolio" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300">Portfolio</Link></li>
-            <li><Link to="/about" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300">About</Link></li>
-            <li><Link to="/blog" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 hover:after:w-full after:bg-accent after:transition-all after:duration-300">Blog</Link></li>
-            <li>
-              <Link 
-                to="/contact" 
-                className="ml-4 bg-primary/90 text-white font-semibold py-2 px-6 rounded hover:bg-primary transition-all duration-300 hover:shadow-glow"
-              >
-                Contact
-              </Link>
-            </li>
+        <nav className="hidden md:flex items-center">
+          <ul className="flex">
+            <li className="mr-6"><Link to="/" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors">Home</Link></li>
+            <li className="mr-6"><Link to="/services" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors">Services</Link></li>
+            <li className="mr-6"><Link to="/portfolio" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors">Portfolio</Link></li>
+            <li className="mr-6"><Link to="/about" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors">About</Link></li>
+            <li className="mr-6"><Link to="/blog" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors">Blog</Link></li>
           </ul>
+          <Link 
+            to="/contact" 
+            className="bg-primary text-white font-semibold py-2 px-6 rounded hover:bg-accent transition-all duration-300"
+          >
+            Contact
+          </Link>
         </nav>
         
         <div className="md:hidden">
