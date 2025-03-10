@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/waxeloquent/static/css/main.34a6fdde.css",
-    "main.js": "/waxeloquent/static/js/main.45d9eabc.js",
+    "main.css": "/waxeloquent/static/css/main.801a5e3a.css",
+    "main.js": "/waxeloquent/static/js/main.db787001.js",
     "index.html": "/waxeloquent/index.html",
-    "main.34a6fdde.css.map": "/waxeloquent/static/css/main.34a6fdde.css.map",
-    "main.45d9eabc.js.map": "/waxeloquent/static/js/main.45d9eabc.js.map"
+    "main.801a5e3a.css.map": "/waxeloquent/static/css/main.801a5e3a.css.map",
+    "main.db787001.js.map": "/waxeloquent/static/js/main.db787001.js.map"
   },
   "entrypoints": [
-    "static/css/main.34a6fdde.css",
-    "static/js/main.45d9eabc.js"
+    "static/css/main.801a5e3a.css",
+    "static/js/main.db787001.js"
   ]
 }
