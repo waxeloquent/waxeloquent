@@ -25,10 +25,16 @@
     <script type="text/javascript">
       // Single-page apps for GitHub Pages
       (function(l) {
+        // Debug location
+        console.log('URL on load:', window.location.href);
+        
         if (l.search[1] === '/' ) {
           var decoded = l.search.slice(1).split('&').map(function(s) { 
             return s.replace(/~and~/g, '&')
           }).join('?');
+          
+          console.log('Redirecting to:', l.pathname.slice(0, -1) + decoded + l.hash);
+          
           window.history.replaceState(null, null,
               l.pathname.slice(0, -1) + decoded + l.hash
           );

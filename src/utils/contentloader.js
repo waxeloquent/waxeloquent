@@ -1,11 +1,20 @@
 // src/utils/contentLoader.ts
 import matter from 'gray-matter';
 
+// Function to get the base URL for GitHub Pages
+const getBaseUrl = () => {
+  // When deployed to GitHub Pages, this will be the repository name
+  return process.env.NODE_ENV === 'production' 
+    ? '/waxeloquent' 
+    : '';
+};
+
 // Function to get a post by its slug
 export async function getPostBySlug(slug: string) {
   try {
-    // Fetch the markdown file
-    const response = await fetch(`${process.env.PUBLIC_URL}/content/blog/${slug}.md`);
+    // Use absolute URL with the base path for GitHub Pages
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/content/blog/${slug}.md`);
     
     if (!response.ok) {
       console.error(`Failed to fetch post ${slug}: ${response.status} ${response.statusText}`);

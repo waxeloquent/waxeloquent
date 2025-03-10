@@ -1,6 +1,6 @@
 // src/pages/Blog/BlogPost.tsx
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import ReactMarkdown from 'react-markdown';
 import { getPostBySlug } from '../../utils/contentLoader';
@@ -18,25 +18,36 @@ interface PostData {
 }
 
 export default function BlogPost() {
+  // Get slug from URL parameters
   const { slug } = useParams<{ slug: string }>();
+  const navigate = useNavigate();
   const [post, setPost] = useState<PostData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   
+  // Log the slug for debugging
+  console.log('Current slug:', slug);
+  
   useEffect(() => {
     async function loadPost() {
       if (!slug) {
+        console.error('No slug provided');
         setError('Post not found');
         setLoading(false);
         return;
       }
       
       try {
+        console.log('Fetching post with slug:', slug);
         const postData = await getPostBySlug(slug);
         
         if (!postData) {
+          console.error('Post not found for slug:', slug);
           setError('Post not found');
+          // After a short delay, redirect to the blog list
+          setTimeout(() => navigate('/blog'), 3000);
         } else {
+          console.log('Post loaded successfully:', postData);
           setPost(postData as unknown as PostData);
         }
       } catch (err) {
@@ -48,7 +59,7 @@ export default function BlogPost() {
     }
     
     loadPost();
-  }, [slug]);
+  }, [slug, navigate]);
   
   if (loading) {
     return (
@@ -64,6 +75,7 @@ export default function BlogPost() {
       <div className="container mx-auto px-5 py-20 text-center">
         <h2 className="font-heading text-2xl mb-4">Error</h2>
         <p>{error || 'Post not found'}</p>
+        <p className="mt-4">Redirecting to blog list...</p>
       </div>
     );
   }
