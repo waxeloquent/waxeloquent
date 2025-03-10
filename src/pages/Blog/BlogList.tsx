@@ -1,7 +1,7 @@
 // src/pages/Blog/BlogList.tsx
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Layout from '../../components/layout/Layout';
+import { Helmet } from 'react-helmet-async';
 import { getAllPosts } from '../../utils/contentLoader';
 
 interface Post {
@@ -35,7 +35,12 @@ export default function BlogList() {
   }, []);
   
   return (
-    <Layout title="Blog" description="Thoughts on effective communication in technical and agile environments">
+    <>
+      <Helmet>
+        <title>Blog | Wax Eloquent</title>
+        <meta name="description" content="Thoughts on effective communication in technical and agile environments." />
+      </Helmet>
+      
       <section className="bg-dark text-white text-center py-16">
         <div className="container mx-auto px-5">
           <h1 className="font-heading text-4xl mb-3">Writing Insights</h1>
@@ -58,7 +63,7 @@ export default function BlogList() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {posts.map((post) => (
                 <article key={post.slug} className="bg-white rounded-lg overflow-hidden shadow-md hover:-translate-y-2 transition-all duration-300 hover:shadow-lg">
-                  {post.frontmatter.image && (
+                  {post.frontmatter.image ? (
                     <div className="h-48 overflow-hidden">
                       <img 
                         src={post.frontmatter.image} 
@@ -66,17 +71,25 @@ export default function BlogList() {
                         className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                       />
                     </div>
+                  ) : (
+                    <div className="h-48 bg-primary/10 flex items-center justify-center">
+                      <span className="text-5xl text-primary">📝</span>
+                    </div>
                   )}
                   <div className="p-6">
                     <div className="flex gap-4 text-sm text-gray-600 mb-3">
-                      <span>{new Date(post.frontmatter.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                      <span>{new Date(post.frontmatter.date).toLocaleDateString('en-US', { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: 'numeric' 
+                      })}</span>
                       {post.frontmatter.categories && post.frontmatter.categories.length > 0 && (
                         <span>{post.frontmatter.categories[0]}</span>
                       )}
                     </div>
                     
                     <h2 className="font-heading text-xl mb-3">
-                      <Link to={`/blog/${post.slug}`} className="text-dark hover:text-primary">
+                      <Link to={`/blog/${post.slug}`} className="text-dark hover:text-primary transition-colors">
                         {post.frontmatter.title}
                       </Link>
                     </h2>
@@ -85,10 +98,12 @@ export default function BlogList() {
                     
                     <Link 
                       to={`/blog/${post.slug}`}
-                      className="inline-block font-semibold text-primary hover:text-secondary relative pr-6"
+                      className="inline-flex items-center text-primary hover:text-secondary transition-colors"
                     >
                       Read More
-                      <span className="absolute right-0 top-1/2 -translate-y-1/2 transition-transform group-hover:translate-x-1">→</span>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
                     </Link>
                   </div>
                 </article>
@@ -97,6 +112,6 @@ export default function BlogList() {
           )}
         </div>
       </section>
-    </Layout>
+    </>
   );
 }
