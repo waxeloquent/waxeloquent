@@ -1,0 +1,34 @@
+backend:
+  name: github
+  repo: waxeloquent/waxeloquent
+  branch: main
+  base_url: https://waxeloquent.github.io
+  auth_endpoint: /oauth-callback
+
+# Media files will be stored in the repo under public/images
+media_folder: "public/images/blog"
+public_folder: "/images/blog"
+
+# This line should match your site URL
+site_url: https://waxeloquent.github.io/waxeloquent
+
+# Allow easy local development
+local_backend: true
+
+# Collections define the structure for content
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog Post" # Used in the UI
+    folder: "public/content/blog" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{slug}}" # Filename template
+    extension: "md"
+    format: "frontmatter"
+    fields: # The fields for each document
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
+      - {label: "Author", name: "author", widget: "string", default: "Rebecca Traeger"}
+      - {label: "Categories", name: "categories", widget: "list"}
+      - {label: "Excerpt", name: "excerpt", widget: "text"}
+      - {label: "Featured Image", name: "image", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}

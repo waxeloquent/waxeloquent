@@ -1,0 +1,13 @@
+{
+    "posts": [
+      {
+        "slug": "welcome-to-our-blog",
+        "title": "Welcome to Our Blog: Insights on Technical Writing and Communication"
+      },
+      {
+        "slug": "technical-jargon-vs-clarity",
+        "title": "Technical Jargon vs. Clarity: Finding the Right Balance"
+      }
+    ],
+    "lastUpdated": "2025-03-07T12:00:00Z"
+  }

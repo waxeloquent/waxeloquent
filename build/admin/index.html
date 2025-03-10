@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wax Eloquent Content Manager</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap">
+  <style>
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+    .header-main-wrapper {
+      background-color: #231942 !important;
+    }
+    button.nc-button {
+      background-color: #5e548e !important;
+      color: white !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <script src="https://unpkg.com/netlify-cms@^2.0.0/dist/netlify-cms.js"></script>
+  
+  <script>
+    // Custom preview styles to match the website
+    CMS.registerPreviewStyle("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap");
+    
+    CMS.registerPreviewStyle(`
+      body {
+        font-family: 'Source Sans Pro', sans-serif;
+        padding: 20px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Playfair Display', serif;
+        color: #231942;
+      }
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+      h2 {
+        font-size: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+      }
+      p {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+      a {
+        color: #5e548e;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      ul, ol {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+      }
+      li {
+        margin-bottom: 0.5rem;
+      }
+      blockquote {
+        border-left: 4px solid #be95c4;
+        padding-left: 1rem;
+        font-style: italic;
+        margin-left: 0;
+      }
+      code {
+        background-color: #f4f1f9;
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+      }
+      pre {
+        background-color: #f4f1f9;
+        padding: 1rem;
+        overflow-x: auto;
+        border-radius: 3px;
+      }
+      .categories {
+        display: flex;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .category {
+        background-color: rgba(94, 84, 142, 0.1);
+        color: #5e548e;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+        font-weight: 600;
+      }
+      .meta {
+        color: #666;
+        font-size: 0.875rem;
+        margin-bottom: 2rem;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 0.5rem;
+      }
+    `);
+  </script>
+</body>
+</html>

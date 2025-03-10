@@ -22,15 +22,6 @@ const posts = [
 ];
 
 export default function BlogList() {
-  // Format date to a nice readable string
-  const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', { 
-      year: 'numeric', 
-      month: 'long', 
-      day: 'numeric' 
-    });
-  };
-
   return (
     <>
       <Helmet>
@@ -55,7 +46,11 @@ export default function BlogList() {
                 </div>
                 <div className="p-6">
                   <div className="flex gap-4 text-sm text-gray-600 mb-3">
-                    <span>{formatDate(post.date)}</span>
+                    <span>{new Date(post.date).toLocaleDateString('en-US', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric' 
+                    })}</span>
                     <span>{post.category}</span>
                   </div>
                   
