@@ -14,6 +14,9 @@ import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import BlogList from './pages/Blog/BlogList';
 import BlogPost from './pages/Blog/BlogPost';
+// Import static blog post fallbacks as a backup
+import WelcomeBlogPost from './pages/Blog/WelcomeBlogPost';
+import TechnicalJargonBlogPost from './pages/Blog/TechnicalJargonBlogPost';
 
 function App() {
   return (
@@ -33,7 +36,14 @@ function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/blog" element={<BlogList />} />
+            
+            {/* Dynamic blog post route - this will attempt to load from markdown */}
             <Route path="/blog/:slug" element={<BlogPost />} />
+            
+            {/* Static fallback routes in case dynamic loading fails */}
+            <Route path="/blog/welcome-to-our-blog" element={<WelcomeBlogPost />} />
+            <Route path="/blog/technical-jargon-vs-clarity" element={<TechnicalJargonBlogPost />} />
+            
             <Route path="/contact" element={<Contact />} />
             {/* Fallback route redirects to home */}
             <Route path="*" element={<Home />} />

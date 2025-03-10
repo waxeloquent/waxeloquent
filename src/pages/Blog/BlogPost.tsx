@@ -1,6 +1,6 @@
 // src/pages/Blog/BlogPost.tsx
 import { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import ReactMarkdown from 'react-markdown';
 import { getPostBySlug } from '../../utils/contentLoader';
@@ -148,6 +148,15 @@ export default function BlogPost() {
                   <p className="text-gray-700">Founder of Wax Eloquent, helping technical professionals communicate with clarity and impact.</p>
                 </div>
               </div>
+            </div>
+
+            <div className="mt-12">
+              <Link to="/blog" className="inline-flex items-center text-primary hover:text-secondary transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Blog
+              </Link>
             </div>
           </div>
         </div>

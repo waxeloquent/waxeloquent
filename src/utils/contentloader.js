@@ -1,18 +1,16 @@
 // src/utils/contentLoader.ts
 import matter from 'gray-matter';
 
-// Function to get the base URL for GitHub Pages
+// Function to get the base URL for GitHub Pages or Netlify
 const getBaseUrl = () => {
-  // When deployed to GitHub Pages, this will be the repository name
-  return process.env.NODE_ENV === 'production' 
-    ? '/waxeloquent' 
-    : '';
+  // When deployed to GitHub Pages or Netlify, this will handle the path correctly
+  return '';
 };
 
 // Function to get a post by its slug
 export async function getPostBySlug(slug: string) {
   try {
-    // Use absolute URL with the base path for GitHub Pages
+    // Use the correct path for content
     const baseUrl = getBaseUrl();
     const response = await fetch(`${baseUrl}/content/blog/${slug}.md`);
     
@@ -39,8 +37,40 @@ export async function getPostBySlug(slug: string) {
 
 // Function to get all posts (for the blog listing page)
 export async function getAllPosts() {
-  // For now, we'll use a list of known slugs
-  // In a real implementation, you'd want to fetch this dynamically
+  try {
+    // Fetch the index of all blog posts
+    const baseUrl = getBaseUrl();
+    const response = await fetch(`${baseUrl}/content/blog/index.json`);
+    
+    if (!response.ok) {
+      // Fall back to hard-coded list if no index file
+      return getFallbackPosts();
+    }
+    
+    const index = await response.json();
+    
+    const posts = await Promise.all(
+      index.posts.map(async (post: { slug: string }) => {
+        const postData = await getPostBySlug(post.slug);
+        return postData;
+      })
+    );
+    
+    // Filter out any null posts and sort by date (most recent first)
+    return posts
+      .filter(Boolean)
+      .sort((a, b) => 
+        new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime()
+      );
+  } catch (error) {
+    console.error('Error fetching blog index:', error);
+    // Fall back to hard-coded list if there's an error
+    return getFallbackPosts();
+  }
+}
+
+// Fallback function to return hardcoded posts
+async function getFallbackPosts() {
   const slugs = ['welcome-to-our-blog', 'technical-jargon-vs-clarity'];
   
   const posts = await Promise.all(
@@ -50,7 +80,6 @@ export async function getAllPosts() {
     })
   );
   
-  // Filter out any null posts and sort by date (most recent first)
   return posts
     .filter(Boolean)
     .sort((a, b) => 
