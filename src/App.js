@@ -21,12 +21,6 @@ function ScrollToTop() {
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
-  
-  // Close mobile menu when route changes
-  useEffect(() => {
-    setMobileMenuOpen(false);
-  }, [location]);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -38,34 +32,27 @@ function Header() {
   }, []);
   
   return (
-    <header className={`transition-all duration-300 fixed w-full top-0 z-50 ${scrolled ? 'bg-dark/95 backdrop-blur shadow-lg py-3' : 'bg-dark py-4'}`}>
-      <div className="container mx-auto px-5 flex justify-between items-center">
-        <Link to="/" className="flex items-center group">
-          <h1 className="font-heading text-2xl font-bold tracking-wide text-white">
-            Wax <span className="text-accent transition-colors duration-300 group-hover:text-white">Eloquent</span>
-          </h1>
-        </Link>
-        
-        <nav className="hidden md:flex items-center">
-          <ul className="flex">
-            <li className="mr-6"><Link to="/" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors">Home</Link></li>
-            <li className="mr-6"><Link to="/services" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors">Services</Link></li>
-            <li className="mr-6"><Link to="/portfolio" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors">Portfolio</Link></li>
-            <li className="mr-6"><Link to="/about" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors">About</Link></li>
-            <li className="mr-6"><Link to="/blog" className="text-white opacity-90 hover:opacity-100 hover:text-accent transition-colors">Blog</Link></li>
-          </ul>
-          <Link 
-            to="/contact" 
-            className="bg-primary text-white font-semibold py-2 px-6 rounded hover:bg-accent transition-all duration-300"
-          >
-            Contact
+    <header className="bg-dark text-white w-full fixed top-0 z-50 shadow-md">
+      <div className="container mx-auto px-4">
+        <div className="flex justify-between items-center py-4">
+          <Link to="/" className="text-xl md:text-2xl font-heading font-bold">
+            Wax <span className="text-accent">Eloquent</span>
           </Link>
-        </nav>
-        
-        <div className="md:hidden">
-          <button 
+          
+          <div className="hidden md:flex items-center gap-8">
+            <Link to="/" className="hover:text-accent transition-colors">Home</Link>
+            <Link to="/services" className="hover:text-accent transition-colors">Services</Link>
+            <Link to="/portfolio" className="hover:text-accent transition-colors">Portfolio</Link>
+            <Link to="/about" className="hover:text-accent transition-colors">About</Link>
+            <Link to="/blog" className="hover:text-accent transition-colors">Blog</Link>
+            <Link to="/contact" className="bg-primary hover:bg-accent py-2 px-6 rounded transition-colors">
+              Contact
+            </Link>
+          </div>
+          
+          <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="text-white focus:outline-none p-1 rounded hover:bg-primary/20 transition-colors"
+            className="md:hidden focus:outline-none"
             aria-label="Toggle menu"
           >
             {mobileMenuOpen ? (
@@ -79,28 +66,26 @@ function Header() {
             )}
           </button>
         </div>
-      </div>
-      
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-dark/95 backdrop-blur py-4 px-5 shadow-lg animate-fade-in border-t border-primary/20">
-          <ul className="flex flex-col gap-4">
-            <li><Link to="/" className="block py-2 text-white hover:text-accent transition-colors" onClick={() => setMobileMenuOpen(false)}>Home</Link></li>
-            <li><Link to="/services" className="block py-2 text-white hover:text-accent transition-colors" onClick={() => setMobileMenuOpen(false)}>Services</Link></li>
-            <li><Link to="/portfolio" className="block py-2 text-white hover:text-accent transition-colors" onClick={() => setMobileMenuOpen(false)}>Portfolio</Link></li>
-            <li><Link to="/about" className="block py-2 text-white hover:text-accent transition-colors" onClick={() => setMobileMenuOpen(false)}>About</Link></li>
-            <li><Link to="/blog" className="block py-2 text-white hover:text-accent transition-colors" onClick={() => setMobileMenuOpen(false)}>Blog</Link></li>
-            <li>
+        
+        {mobileMenuOpen && (
+          <div className="py-4 border-t border-gray-700">
+            <div className="flex flex-col gap-4">
+              <Link to="/" className="hover:text-accent transition-colors" onClick={() => setMobileMenuOpen(false)}>Home</Link>
+              <Link to="/services" className="hover:text-accent transition-colors" onClick={() => setMobileMenuOpen(false)}>Services</Link>
+              <Link to="/portfolio" className="hover:text-accent transition-colors" onClick={() => setMobileMenuOpen(false)}>Portfolio</Link>
+              <Link to="/about" className="hover:text-accent transition-colors" onClick={() => setMobileMenuOpen(false)}>About</Link>
+              <Link to="/blog" className="hover:text-accent transition-colors" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
               <Link 
                 to="/contact" 
-                className="block bg-primary text-white font-semibold py-2 px-4 rounded text-center mt-2"
+                className="bg-primary hover:bg-accent py-2 px-4 rounded transition-colors inline-block text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
               </Link>
-            </li>
-          </ul>
-        </div>
-      )}
+            </div>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
@@ -720,7 +705,7 @@ function App() {
       <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow pt-20">
+        <main className="flex-grow pt-16">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services" element={<Services />} />
