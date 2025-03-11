@@ -12,16 +12,19 @@ import { useLocation } from 'react-router-dom';
  * @returns null - This component doesn't render anything
  */
 function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
+    // Add debugging to verify route changes are detected
+    console.log('Route changed to:', pathname, hash);
+    
     // Smoothly scroll to the top of the page when route changes
     window.scrollTo({
       top: 0,
       left: 0,
       behavior: 'smooth'
     });
-  }, [pathname]);
+  }, [pathname, hash]); // Also watch for hash changes since we're using HashRouter
 
   // This component doesn't render anything
   return null;

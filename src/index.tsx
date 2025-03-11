@@ -9,13 +9,16 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
+// Log to confirm the HashRouter is being used
+console.log('Using HashRouter for routing');
+
 root.render(
   <React.StrictMode>
     {/* 
-      Use HashRouter instead of BrowserRouter for GitHub Pages
-      This ensures that client-side routing works properly with GitHub Pages
+      HashRouter with no basename to ensure GitHub Pages compatibility
+      This will properly handle routes with the hash pattern
     */}
-    <HashRouter>
+    <HashRouter basename="">
       <App />
     </HashRouter>
   </React.StrictMode>

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import { useEffect } from 'react';
 
 // Hard-coded blog posts data to avoid relying on external files
 const posts = [
@@ -22,6 +23,11 @@ const posts = [
 ];
 
 export default function BlogList() {
+  // Debug for checking links
+  useEffect(() => {
+    console.log('BlogList rendered, posts:', posts);
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -55,7 +61,13 @@ export default function BlogList() {
                   </div>
                   
                   <h2 className="font-heading text-xl mb-3">
-                    <Link to={`/blog/${post.slug}`} className="text-dark hover:text-primary transition-colors">
+                    <Link 
+                      to={`/blog/${post.slug}`} 
+                      className="text-dark hover:text-primary transition-colors"
+                      onClick={(e) => {
+                        console.log(`Clicked blog post link: /blog/${post.slug}`);
+                      }}
+                    >
                       {post.title}
                     </Link>
                   </h2>
@@ -65,6 +77,9 @@ export default function BlogList() {
                   <Link 
                     to={`/blog/${post.slug}`}
                     className="inline-flex items-center text-primary hover:text-secondary transition-colors"
+                    onClick={(e) => {
+                      console.log(`Clicked "Read More" link: /blog/${post.slug}`);
+                    }}
                   >
                     Read More
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -74,6 +89,12 @@ export default function BlogList() {
                 </div>
               </article>
             ))}
+          </div>
+
+          {/* Debug message for development */}
+          <div className="mt-12 text-center text-gray-500 text-sm">
+            <p>Using HashRouter for GitHub Pages compatibility</p>
+            <p>Blog post URLs should be in the format: /#/blog/post-slug</p>
           </div>
         </div>
       </section>
