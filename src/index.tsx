@@ -1,26 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { HashRouter } from 'react-router-dom';
-import './index.css';
 import App from './App';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-// Log to confirm the HashRouter is being used
-console.log('Using HashRouter for routing');
-
 root.render(
   <React.StrictMode>
-    {/* 
-      HashRouter with no basename to ensure GitHub Pages compatibility
-      This will properly handle routes with the hash pattern
-    */}
-    <HashRouter basename="">
-      <App />
-    </HashRouter>
+    <App />
   </React.StrictMode>
 );
 
