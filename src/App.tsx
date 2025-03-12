@@ -1,3 +1,4 @@
+// App.tsx (or App.js) - Updated with proper blog routing
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
@@ -13,8 +14,7 @@ import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
-import BlogPost1 from './pages/BlogPost1';
-import BlogPost2 from './pages/BlogPost2';
+import BlogPost from './pages/BlogPost';
 
 function App() {
   return (
@@ -32,8 +32,7 @@ function App() {
               <Route path="/services" element={<Services />} />
               <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/welcome-to-our-blog" element={<BlogPost1 />} />
-              <Route path="/blog/technical-jargon-vs-clarity" element={<BlogPost2 />} />
+              <Route path="/blog/:postId" element={<BlogPost />} /> {/* Dynamic route for blog posts */}
               <Route path="/contact" element={<Contact />} />
               {/* Fallback route redirects to home */}
               <Route path="*" element={<Home />} />
