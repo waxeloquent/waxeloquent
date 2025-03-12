@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Technical Jargon vs. Clarity | Wax Eloquent</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Source Sans Pro', sans-serif;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Playfair Display', serif;
+    }
+    .prose {
+      max-width: 65ch;
+      color: #374151;
+      line-height: 1.7;
+    }
+    .prose h1 {
+      font-size: 2.25rem;
+      margin-top: 0;
+      margin-bottom: 0.8888889em;
+      line-height: 1.1111111;
+    }
+    .prose h2 {
+      font-size: 1.5rem;
+      margin-top: 2em;
+      margin-bottom: 1em;
+      line-height: 1.3333333;
+    }
+    .prose h3 {
+      font-size: 1.25rem;
+      margin-top: 1.6em;
+      margin-bottom: 0.6em;
+      line-height: 1.6;
+    }
+    .prose p {
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+    }
+    .prose ul {
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+      padding-left: 1.625em;
+    }
+    .prose ol {
+      margin-top: 1.25em;
+      margin-bottom: 1.25em;
+      padding-left: 1.625em;
+    }
+    .prose li {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+    .prose a {
+      color: #5e548e;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+    .prose a:hover {
+      color: #9f86c0;
+    }
+    .prose strong {
+      font-weight: 600;
+      color: #111827;
+    }
+    /* Custom colors */
+    .bg-dark { background-color: #231942; }
+    .bg-primary { background-color: #5e548e; }
+    .bg-secondary { background-color: #9f86c0; }
+    .bg-accent { background-color: #be95c4; }
+    .bg-light { background-color: #f4f1f9; }
+    .text-primary { color: #5e548e; }
+    .text-secondary { color: #9f86c0; }
+    .text-accent { color: #be95c4; }
+    .hover\:text-primary:hover { color: #5e548e; }
+    .hover\:text-secondary:hover { color: #9f86c0; }
+    .hover\:text-accent:hover { color: #be95c4; }
+    .border-primary { border-color: #5e548e; }
+  </style>
+</head>
+<body class="bg-light min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-dark text-white">
+    <div class="container mx-auto px-5 py-4 flex justify-between items-center">
+      <a href="/" class="text-2xl font-heading font-bold">
+        Wax <span class="text-accent">Eloquent</span>
+      </a>
+      <nav>
+        <ul class="hidden md:flex gap-6">
+          <li><a href="/" class="hover:text-accent">Home</a></li>
+          <li><a href="/#/services" class="hover:text-accent">Services</a></li>
+          <li><a href="/#/portfolio" class="hover:text-accent">Portfolio</a></li>
+          <li><a href="/#/about" class="hover:text-accent">About</a></li>
+          <li><a href="/blog/" class="text-accent">Blog</a></li>
+          <li><a href="/#/contact" class="bg-primary hover:bg-secondary px-4 py-2 rounded">Contact</a></li>
+        </ul>
+        <button class="md:hidden text-white" id="mobile-menu-button">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </nav>
+    </div>
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="container mx-auto px-5 py-4">
+        <ul class="flex flex-col gap-4">
+          <li><a href="/" class="block hover:text-accent">Home</a></li>
+          <li><a href="/#/services" class="block hover:text-accent">Services</a></li>
+          <li><a href="/#/portfolio" class="block hover:text-accent">Portfolio</a></li>
+          <li><a href="/#/about" class="block hover:text-accent">About</a></li>
+          <li><a href="/blog/" class="block text-accent">Blog</a></li>
+          <li><a href="/#/contact" class="block bg-primary hover:bg-secondary px-4 py-2 rounded text-center mt-2">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-dark text-white py-16">
+    <div class="container mx-auto px-5">
+      <div class="text-center mb-8">
+        <div class="mb-4">
+          <span class="inline-block bg-primary/20 text-accent px-3 py-1 rounded-full text-sm font-semibold mr-2">Technical Writing</span>
+          <span class="inline-block bg-primary/20 text-accent px-3 py-1 rounded-full text-sm font-semibold">Best Practices</span>
+        </div>
+        <h1 class="font-heading text-3xl md:text-4xl lg:text-5xl mb-4">Technical Jargon vs. Clarity: Finding the Right Balance</h1>
+        <div class="flex items-center justify-center text-sm opacity-90">
+          <span>February 15, 2025</span>
+          <span class="mx-2">•</span>
+          <span>By Rebecca Traeger</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Blog Content -->
+  <section class="py-16">
+    <div class="container mx-auto px-5">
+      <div class="max-w-3xl mx-auto">
+        <article class="prose prose-lg max-w-none bg-white p-8 rounded-lg shadow-sm">
+          <h1>Technical Jargon vs. Clarity: Finding the Right Balance</h1>
+
+          <p>In the world of technical communication, one of the most persistent challenges is finding the right balance between technical precision and general clarity. Use too much jargon, and you risk alienating part of your audience. Oversimplify, and you might lose credibility with technical experts or fail to convey critical details.</p>
+
+          <p>So how do you navigate this delicate balance? Let's explore strategies for striking the right balance in different contexts.</p>
+
+          <h2>Understanding Your Audience</h2>
+
+          <p>The first and most important step is to clearly define your audience. Ask yourself:</p>
+
+          <ul>
+            <li>What is their level of technical knowledge?</li>
+            <li>What terminology are they already familiar with?</li>
+            <li>What are they trying to accomplish?</li>
+            <li>What prior knowledge can you assume?</li>
+          </ul>
+
+          <p>Different audiences require different approaches:</p>
+
+          <h3>Technical Experts</h3>
+
+          <p>When writing for developers, engineers, or other technical specialists:</p>
+
+          <ul>
+            <li>Technical terminology is expected and appreciated</li>
+            <li>Precision is crucial</li>
+            <li>Unnecessary explanations of industry-standard concepts can be frustrating</li>
+          </ul>
+
+          <h3>Mixed Technical and Non-Technical Audience</h3>
+
+          <p>When writing for a mixed audience (e.g., product managers, executives with technical background):</p>
+
+          <ul>
+            <li>Define specialized terms on first use</li>
+            <li>Include both technical details and business context</li>
+            <li>Use visual aids to explain complex concepts</li>
+          </ul>
+
+          <h3>Non-Technical Stakeholders</h3>
+
+          <p>When writing for business users, customers, or executives without technical backgrounds:</p>
+
+          <ul>
+            <li>Focus on benefits and outcomes rather than technical implementation</li>
+            <li>Use analogies and metaphors to explain complex concepts</li>
+            <li>Minimize jargon or explain it thoroughly when used</li>
+          </ul>
+
+          <h2>Strategies for Balancing Precision and Clarity</h2>
+
+          <h3>1. Layer Your Content</h3>
+
+          <p>One effective approach is to layer your content, starting with the most accessible information and progressively disclosing more technical details:</p>
+
+          <pre><code>Executive Summary → Overview → Detailed Implementation → Technical Specifications</code></pre>
+
+          <p>This allows different readers to engage at their preferred level of technical depth.</p>
+
+          <h3>2. Create a Terminology Guide</h3>
+
+          <p>For longer documents or complex products, consider including a terminology guide that defines key terms. This allows you to use precise technical language while providing a reference for those less familiar with the terminology.</p>
+
+          <h3>3. Use Visual Communication</h3>
+
+          <p>Diagrams, illustrations, and flowcharts can bridge the gap between technical and non-technical understanding. A well-designed diagram can convey complex technical concepts in a way that's immediately accessible.</p>
+
+          <h2>Conclusion: Clarity as a Competitive Advantage</h2>
+
+          <p>In an increasingly complex technical landscape, clarity isn't just about good writing—it's a competitive advantage. Organizations that can explain their technology clearly stand out from those that hide behind unnecessary jargon.</p>
+
+          <p>Remember that the goal of technical communication isn't to showcase your expertise or to use impressive terminology. It's to transfer understanding from one mind to another as efficiently as possible.</p>
+
+          <p><em>Rebecca Traeger</em><br>
+          <em>Founder, Wax Eloquent</em></p>
+        </article>
+        
+        <div class="bg-white p-8 rounded-lg shadow-sm mt-8">
+          <div class="border-t border-gray-200 pt-8">
+            <div class="flex items-center">
+              <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mr-4">
+                <span class="text-xl font-bold">R</span>
+              </div>
+              <div>
+                <h3 class="font-heading text-xl mb-1">About Rebecca Traeger</h3>
+                <p class="text-gray-700">Founder of Wax Eloquent, helping technical professionals communicate with clarity and impact.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12 flex justify-between items-center">
+            <a href="welcome-to-our-blog.html" class="inline-flex items-center text-primary hover:text-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              Previous Post
+            </a>
+            <a href="index.html" class="inline-flex items-center text-primary hover:text-secondary">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+              </svg>
+              Back to Blog
+            </a>
+            <div></div> <!-- Empty div for proper spacing in the flex layout -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-dark text-light py-16 mt-auto">
+    <div class="container mx-auto px-5">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+        <div>
+          <h2 class="font-heading text-2xl text-white mb-4">Wax Eloquent</h2>
+          <p class="opacity-80">Precision and clarity in every word.</p>
+        </div>
+        
+        <div>
+          <h3 class="text-xl text-white mb-6">Quick Links</h3>
+          <ul class="space-y-3">
+            <li><a href="/" class="opacity-80 hover:opacity-100 hover:text-accent">Home</a></li>
+            <li><a href="/#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Services</a></li>
+            <li><a href="/#/portfolio" class="opacity-80 hover:opacity-100 hover:text-accent">Portfolio</a></li>
+            <li><a href="/#/about" class="opacity-80 hover:opacity-100 hover:text-accent">About</a></li>
+            <li><a href="/blog/" class="opacity-100 text-accent">Blog</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl text-white mb-6">Services</h3>
+          <ul class="space-y-3">
+            <li><a href="/#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Editing</a></li>
+            <li><a href="/#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Ghostwriting</a></li>
+            <li><a href="/#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Marketing Content</a></li>
+            <li><a href="/#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Executive Comms</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-xl text-white mb-6">Contact</h3>
+          <p class="mb-4">Email: <a href="mailto:rebecca@waxeloquent.com" class="opacity-80 hover:opacity-100 hover:text-accent">rebecca@waxeloquent.com</a></p>
+          <div class="flex gap-4 mt-4">
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="text-xl opacity-80 hover:opacity-100 hover:text-accent">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="text-xl opacity-80 hover:opacity-100 hover:text-accent">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://medium.com" target="_blank" rel="noopener noreferrer" class="text-xl opacity-80 hover:opacity-100 hover:text-accent">
+              <i class="fab fa-medium"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="border-t border-gray-700 pt-8 text-center">
+        <p class="text-sm opacity-70">&copy; <script>document.write(new Date().getFullYear())</script> Wax Eloquent. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.addEventListener('DOMContentLoaded', function() {
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
