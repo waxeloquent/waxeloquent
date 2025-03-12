@@ -1,4 +1,3 @@
-// App.tsx (or App.js) - Updated with proper blog routing
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
@@ -6,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 // Import Layout Components
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
+import ScrollToTop from './components/layout/ScrollToTop';
 
 // Import Pages
 import Home from './pages/Home';
@@ -14,12 +14,13 @@ import Services from './pages/Services';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
+import BlogPost from './pages/BlogPost'; // Import the BlogPost component
 
 function App() {
   return (
     <HashRouter>
       <HelmetProvider>
+        <ScrollToTop />
         <div className="flex flex-col min-h-screen">
           {/* Fixed header with proper z-index and styling */}
           <Header />

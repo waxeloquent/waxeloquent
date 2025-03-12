@@ -1,15 +1,16 @@
-// src/pages/BlogPost.tsx - Single Blog Post Component
 import React from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
 // Import the posts array
-// In a real application, you'd likely use a context or store for this data
-// For simplicity, we're importing directly from the Blog component
-import { posts } from './Blog'; // Make sure to export posts from Blog.tsx
+import { posts } from './Blog';
 
-const BlogPost = () => {
-  const { postId } = useParams();
+interface BlogPostParams {
+  postId: string;
+}
+
+const BlogPost: React.FC = () => {
+  const { postId } = useParams<BlogPostParams>();
   const navigate = useNavigate();
   
   // Find the current post

@@ -1,16 +1,14 @@
-// src/pages/Blog.tsx - Updated Blog Component
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 
-// Blog post data - this is your centralized blog post management system
-// Add new posts here and they'll automatically appear in the blog list
-const posts = [
+// Blog post data - export this so BlogPost component can access it
+export const posts = [
   {
     id: 'welcome-to-our-blog',
     title: 'Welcome to Our Blog: Insights on Technical Writing and Communication',
     date: '2025-03-07',
-    category: 'Communication',
+    category: 'Content Strategy',  // Matched to your screenshot
     tags: ['Communication', 'Announcements'],
     excerpt: 'Introducing our blog where we\'ll share insights, tips, and strategies for effective technical communication and content creation.',
     emoji: '📝',
@@ -130,29 +128,11 @@ const posts = [
 
       <p>Remember that the goal of technical communication isn't to showcase your expertise or to use impressive terminology. It's to transfer understanding from one mind to another as efficiently as possible.</p>
     `
-  },
-  // You can add more blog posts here following the same structure
-  // Example of how to add a new post:
-  /*
-  {
-    id: 'your-post-slug',
-    title: 'Your Post Title',
-    date: '2025-04-15',
-    category: 'Your Category',
-    tags: ['Tag1', 'Tag2'],
-    excerpt: 'Brief description of your post',
-    emoji: '🚀',
-    author: 'Author Name',
-    content: `
-      <h1>Your Post Title</h1>
-      <p>Your content here...</p>
-    `
   }
-  */
 ];
 
 // Blog page component (list of blog posts)
-const Blog = () => {
+const Blog: React.FC = () => {
   return (
     <>
       <Helmet>
