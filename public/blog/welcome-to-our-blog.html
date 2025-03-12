@@ -88,19 +88,37 @@
   <!-- Header -->
   <header class="bg-dark text-white">
     <div class="container mx-auto px-5 py-4 flex justify-between items-center">
-      <a href="../" class="text-2xl font-heading font-bold">
+      <a href="/waxeloquent/" class="text-2xl font-heading font-bold">
         Wax <span class="text-accent">Eloquent</span>
       </a>
       <nav>
-        <ul class="flex gap-6">
-          <li><a href="../" class="hover:text-accent">Home</a></li>
-          <li><a href="../#/services" class="hover:text-accent">Services</a></li>
-          <li><a href="../#/portfolio" class="hover:text-accent">Portfolio</a></li>
-          <li><a href="../#/about" class="hover:text-accent">About</a></li>
-          <li><a href="../#/blog" class="text-accent">Blog</a></li>
-          <li><a href="../#/contact" class="bg-primary hover:bg-secondary px-4 py-2 rounded">Contact</a></li>
+        <ul class="hidden md:flex gap-6">
+          <li><a href="/waxeloquent/" class="hover:text-accent">Home</a></li>
+          <li><a href="/waxeloquent/#/services" class="hover:text-accent">Services</a></li>
+          <li><a href="/waxeloquent/#/portfolio" class="hover:text-accent">Portfolio</a></li>
+          <li><a href="/waxeloquent/#/about" class="hover:text-accent">About</a></li>
+          <li><a href="/waxeloquent/blog/index.html" class="text-accent">Blog</a></li>
+          <li><a href="/waxeloquent/#/contact" class="bg-primary hover:bg-secondary px-4 py-2 rounded">Contact</a></li>
         </ul>
+        <button class="md:hidden text-white" id="mobile-menu-button">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </nav>
+    </div>
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+      <div class="container mx-auto px-5 py-4">
+        <ul class="flex flex-col gap-4">
+          <li><a href="/waxeloquent/" class="block hover:text-accent">Home</a></li>
+          <li><a href="/waxeloquent/#/services" class="block hover:text-accent">Services</a></li>
+          <li><a href="/waxeloquent/#/portfolio" class="block hover:text-accent">Portfolio</a></li>
+          <li><a href="/waxeloquent/#/about" class="block hover:text-accent">About</a></li>
+          <li><a href="/waxeloquent/blog/index.html" class="block text-accent">Blog</a></li>
+          <li><a href="/waxeloquent/#/contact" class="block bg-primary hover:bg-secondary px-4 py-2 rounded text-center mt-2">Contact</a></li>
+        </ul>
+      </div>
     </div>
   </header>
 
@@ -224,21 +242,21 @@
         <div>
           <h3 class="text-xl text-white mb-6">Quick Links</h3>
           <ul class="space-y-3">
-            <li><a href="../" class="opacity-80 hover:opacity-100 hover:text-accent">Home</a></li>
-            <li><a href="../#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Services</a></li>
-            <li><a href="../#/portfolio" class="opacity-80 hover:opacity-100 hover:text-accent">Portfolio</a></li>
-            <li><a href="../#/about" class="opacity-80 hover:opacity-100 hover:text-accent">About</a></li>
-            <li><a href="../#/blog" class="opacity-100 text-accent">Blog</a></li>
+            <li><a href="/waxeloquent/" class="opacity-80 hover:opacity-100 hover:text-accent">Home</a></li>
+            <li><a href="/waxeloquent/#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Services</a></li>
+            <li><a href="/waxeloquent/#/portfolio" class="opacity-80 hover:opacity-100 hover:text-accent">Portfolio</a></li>
+            <li><a href="/waxeloquent/#/about" class="opacity-80 hover:opacity-100 hover:text-accent">About</a></li>
+            <li><a href="/waxeloquent/blog/index.html" class="opacity-100 text-accent">Blog</a></li>
           </ul>
         </div>
         
         <div>
           <h3 class="text-xl text-white mb-6">Services</h3>
           <ul class="space-y-3">
-            <li><a href="../#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Editing</a></li>
-            <li><a href="../#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Ghostwriting</a></li>
-            <li><a href="../#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Marketing Content</a></li>
-            <li><a href="../#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Executive Comms</a></li>
+            <li><a href="/waxeloquent/#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Editing</a></li>
+            <li><a href="/waxeloquent/#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Ghostwriting</a></li>
+            <li><a href="/waxeloquent/#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Marketing Content</a></li>
+            <li><a href="/waxeloquent/#/services" class="opacity-80 hover:opacity-100 hover:text-accent">Executive Comms</a></li>
           </ul>
         </div>
         
@@ -266,13 +284,13 @@
   </footer>
 
   <script>
-    // Simple script to handle mobile menu toggle if needed
+    // Mobile menu toggle
     document.addEventListener('DOMContentLoaded', function() {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const mobileMenu = document.querySelector('.mobile-menu');
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
       
-      if (menuToggle && mobileMenu) {
-        menuToggle.addEventListener('click', function() {
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', function() {
           mobileMenu.classList.toggle('hidden');
         });
       }

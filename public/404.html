@@ -1,40 +1,119 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Wax Eloquent</title>
-    <script type="text/javascript">
-      // Single Page Apps for GitHub Pages
-      // MIT License
-      // https://github.com/rafgraph/spa-github-pages
+<head>
+  <meta charset="utf-8">
+  <title>Page Not Found - Wax Eloquent</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f4f1f9;
+      color: #333;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      max-width: 600px;
+      padding: 30px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #231942;
+      margin-bottom: 20px;
+    }
+    p {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+    .accent {
+      color: #be95c4;
+    }
+    .button {
+      display: inline-block;
+      background-color: #5e548e;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s;
+    }
+    .button:hover {
+      background-color: #9f86c0;
+    }
+    #redirect-message {
+      display: none;
+      margin-top: 20px;
+      font-style: italic;
+    }
+  </style>
+  <script>
+    // Wait for DOM to load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Handle path redirection
+      const path = window.location.pathname;
+      const redirectMessage = document.getElementById('redirect-message');
       
-      // This script takes the current url and converts the path and query
-      // string into just a query string, and then redirects the browser
-      // to the new url with only a query string and hash fragment
+      // Set a timeout to show the redirect message if we're still on this page after 1 second
+      setTimeout(function() {
+        if (redirectMessage) {
+          redirectMessage.style.display = 'block';
+        }
+      }, 1000);
       
-      // If you're creating a Project Pages site and NOT using a custom domain,
-      // then set pathSegmentsToKeep to 1 (enterprise users may need to set it to > 1).
-      // This way the code will only replace the route part of the path, and not
-      // the real directory in which the app resides.
-      var pathSegmentsToKeep = 1;
-
-      var l = window.location;
+      // Blog-specific redirects
+      if (path.includes('/blog/')) {
+        // Check if we're missing .html extension on what might be a blog post
+        if (!path.endsWith('.html')) {
+          // Try to add .html and redirect
+          window.location.href = path + '.html';
+          return;
+        }
+      }
       
-      // Debugging information in console
-      console.log('Original path: ', l.pathname);
+      // Specific redirect for /blog path
+      if (path === '/waxeloquent/blog' || path === '/blog') {
+        window.location.href = '/waxeloquent/blog/index.html';
+        return;
+      }
       
-      var newPath = l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash;
-      
-      console.log('Redirecting to: ', newPath);
-      l.replace(newPath);
-    </script>
-  </head>
-  <body>
-    <h1>Redirecting...</h1>
-    <p>If you are not redirected automatically, follow this <a href="/">link</a>.</p>
-  </body>
+      // If we're still here, we didn't handle the redirect yet.
+      // This only shows if the automatic redirect didn't happen
+      console.log('No specific redirect rule matched for path:', path);
+    });
+  </script>
+  <!-- Preload fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+Pro:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="logo">
+    Wax <span class="accent">Eloquent</span>
+  </div>
+  <div class="container">
+    <h1>Page Not Found</h1>
+    <p>We're sorry, but the page you were looking for doesn't exist.</p>
+    <p>If you were trying to access a blog post, please visit our blog index to find the article you were looking for.</p>
+    <a href="/waxeloquent/blog/index.html" class="button">Go to Blog</a>
+    <p>Or return to our homepage:</p>
+    <a href="/waxeloquent/" class="button">Go to Homepage</a>
+    <p id="redirect-message">If you're not redirected automatically, please click one of the buttons above.</p>
+  </div>
+</body>
 </html>
