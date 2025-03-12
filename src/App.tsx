@@ -1,3 +1,5 @@
+// File: App.tsx (update with MDX blog routes)
+
 import React from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';

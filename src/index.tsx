@@ -1,6 +1,8 @@
+// File: src/index.tsx
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
+import App from './App'; // This imports App.tsx since both files exist and TypeScript prioritizes .tsx
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
